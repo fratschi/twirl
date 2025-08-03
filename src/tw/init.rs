@@ -15,10 +15,11 @@ pub fn check() -> Result<()> {
         return Err(Error::new(ErrorKind::Other, "User declined to continue").into());
     }
     init_path(&home_dir)?;
+    write_toml(&home_dir.join("twirl.toml"))?;
     init_path(&home_dir.join("fonts"))?;
     download_asset(&home_dir.join("fonts/code.ttf"), CODE_FONT)?;
     download_asset(&home_dir.join("fonts/mono.ttf"), MONOSPACE_FONT)?;
-    write_toml(&home_dir.join("twirl.toml"))?;
+    init_path(&home_dir.join("img"))?;
     Ok(())
 }
 
@@ -29,7 +30,7 @@ fn init_path(path: &PathBuf) -> Result<()> {
     Ok(())
 }
 
-fn home_dir(subdir: &str) -> Result<PathBuf> {
+pub fn home_dir(subdir: &str) -> Result<PathBuf> {
     let dir = env::home_dir()
         .ok_or_else(|| Error::new(ErrorKind::NotFound, "Could not determine home directory"))?;
     Ok(dir.join(subdir))

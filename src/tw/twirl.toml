@@ -1,3 +1,11 @@
 [fonts]
 code = "code.ttf"
 mono = "mono.ttf"
+
+
+[theme]
+background = "#181818"
+foreground = "#ffffff"
+green =      "#73c936"
+yellow =     "#ffdd33"
+red =        "#f43841"
