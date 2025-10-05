@@ -108,6 +108,7 @@ pub fn load_config() -> Result<TwirlConfig> {
 
 
 fn get(value: &Value) -> String {
+
     match value {
         Value::String(s) => s.clone(),
         Value::Integer(i) => i.to_string(),
